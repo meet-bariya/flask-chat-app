@@ -17,4 +17,6 @@ RUN chmod +x entrypoint.sh
 
 COPY . .
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["/opt/venv/bin/python","./app/main.py"]
+
+# ENTRYPOINT ["/app/entrypoint.sh"]
