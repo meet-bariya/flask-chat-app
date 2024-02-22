@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Create a Room</h1>
+
+<form method="POST">
+    <label>
+        Name
+        <input type="text" name="name" placeholder="Name to be displayed" aria-label="Name"
+            aria-describedby="error-helper" value="{{name}}" />
+    </label>
+
+
+    {% if error %}
+    <small id="error-helper">
+        {{error}}
+    </small>
+    {% endif %}
+   
+    <input type="submit" value="create" name="create" />
+
+
+    <div>
+        <h2> Have room code? Join </h2>
+    </div>
+
+    <fieldset role="group">
+        <fieldset role="group">
+            <label for="code">
+                Room Code
+            </label>
+
+                <input type="text" name="code" placeholder="Room Code" aria-label="Code" aria-describedby="error-helper"
+                value="{{code}}" />     
+                <input type="submit" value="join" name="join" />           
+
+          </fieldset>
+       
+    </fieldset>
+</form>
+{% endblock content %}

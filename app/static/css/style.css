@@ -1,0 +1,49 @@
+body{
+    max-width: 1200px;
+    margin: 70px auto;
+    max-height: 50vh;
+    overflow: hidden;
+}
+
+.container{
+    padding: 20px;
+}
+
+h1{
+    margin-top: -10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2{
+    margin: 30px auto;
+    text-align: center;
+}
+
+.conversation{
+    height: 60vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform: rotate(180deg);
+    direction: rtl;
+    text-align: left;
+
+}
+  .conversation > div {
+    overflow: hidden;
+    transform: rotate(180deg);
+  }
+
+.message-box{
+    margin-top: 30px;
+}
+
+
+.room-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 50px;
+    margin: 10px 50px;
+    background: #202632;
+}

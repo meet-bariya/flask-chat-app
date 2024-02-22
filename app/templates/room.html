@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="room-card">
+  <h1 class="room-heading">Room: {{room}}</h1>
+
+  <div class="conversation">
+    <div>
+      {% for message in messages %}
+      <article>
+        <span>{{message.name}}</span>
+        <span> at {{message.timestamp}}</span>
+        <p>{{message.message}}</p>
+  
+      </article>
+  
+      {% endfor %}
+      <div id="messages">
+      </div>
+    </div>
+    
+  </div>
+  
+
+  <form method="POST">
+    <fieldset role="group" class="message-box">
+      <input name="text" type="text" id="message" placeholder="Enter message..." autofocus/>
+      <input type="submit" value="Send" onclick="sendMessage()" />
+    </fieldset>
+  </form>
+
+</div>
+
+<script>
+  let socketio = io(null, { port: 8000, rememberTransport: false });
+  const messages = document.getElementById("messages");
+
+  const createMessage = (name, message) => {
+    const content = `
+          <article>
+            <span>${name} </span> 
+            <span>${new Date().toLocaleString()}</span>
+            <p>${message}</p>
+          </article>
+            `;
+    messages.innerHTML += content;
+  }
+
+  socketio.on('message', (data) => {
+    createMessage(data.name, data.message);
+  })
+
+  const sendMessage = () => {
+    const message = document.getElementById('message');
+    if (message.value == '') return;
+    console.log(message.value)
+
+    socketio.emit('message', { data: message.value, timestamp: new Date().toLocaleString() });
+    message.value = '';
+  }
+
+</script>
+{% endblock content %}

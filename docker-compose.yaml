@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    image: meetbariya/chat-app:1.0
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.example
+    volumes:
+      - .:/app
+    entrypoint: /opt/venv/bin/python ./app/main.py
