@@ -87,7 +87,6 @@ def connect(auth):
     
     join_room(room)
     rooms[room]['members'] += 1
-    send(f'{name} has joined the conversation')
     print(f'{name} has joined the room {room}')
 
 @socketio.on('disconnect')
